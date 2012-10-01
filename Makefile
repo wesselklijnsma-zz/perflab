@@ -7,9 +7,9 @@ WSIZE = 64
 OPTLEVEL = 2
 
 CC = gcc
-CFLAGS = -Wall -g -O$(OPTLEVEL) -mssse3  -mfpmath=sse  -m$(WSIZE) 
-CFLAGS = -Wall -g -m$(WSIZE)
-CFLAGS = -Wall -g 
+CFLAGS = -Wall -g -pg -O$(OPTLEVEL) -mssse3  -mfpmath=sse  -m$(WSIZE) 
+CFLAGS = -Wall -g -pg -m$(WSIZE)
+CFLAGS = -Wall -g -pg
 
 LIBS = -lm -lrt
 

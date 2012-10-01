@@ -49,12 +49,13 @@ static pixel *maximum_1(int dim, pixel *src)
 
     for(jj = dim-1; jj >= 0; jj--)
         for(ii = 0; ii <= dim-1; ii++)
+        {
             if (intensity (src[RIDX(ii, jj, dim)]) > darkness)
             {
                 darkness = intensity (src[RIDX(ii, jj, dim)]);
                 maxi = &(src[RIDX(ii, jj, dim)]);
             }
-
+        }
     return maxi;
 }
 
@@ -97,9 +98,10 @@ void line_1(int dim, pixel *src, pixel *dst) {
 
     double y = y0;
     int x = x0;
+    pixel max = *maximum(dim, src);
 
     for (; x <= x1; x++) {
-        dst[RIDX(x, (int)rint(y), dim)] = *maximum_1(dim, src);
+        dst[RIDX(x, (int)rint(y), dim)] = max;
         y += slope;
     }
 }

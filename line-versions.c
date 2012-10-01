@@ -41,6 +41,22 @@ static pixel *maximum(int dim, pixel *src)
 
     return maxi;
 }
+static pixel *maximum_1(int dim, pixel *src)
+{
+    int ii, jj;
+    pixel *maxi = src;
+    int darkness = 0;
+
+    for(jj = dim-1; jj >= 0; jj--)
+        for(ii = 0; ii <= dim-1; ii++)
+            if (intensity (src[RIDX(ii, jj, dim)]) > darkness)
+            {
+                darkness = intensity (src[RIDX(ii, jj, dim)]);
+                maxi = &(src[RIDX(ii, jj, dim)]);
+            }
+
+    return maxi;
+}
 
 /******************************************************
  * Your different versions of the draw_line function go here
@@ -69,3 +85,21 @@ void naive_line(int dim, pixel *src, pixel *dst) {
     }
 }
 
+void line_1(int dim, pixel *src, pixel *dst) {
+    int x0 = 0;
+    int y0 = floor (dim / 3); /* left endpoint */
+    int x1 = dim - 1;
+    int y1 = ceil (dim - 1 - dim / 3); /* right endpoint */
+
+    double dy = y1 - y0;
+    double dx = x1 - x0;
+    double slope = dy / dx;
+
+    double y = y0;
+    int x = x0;
+
+    for (; x <= x1; x++) {
+        dst[RIDX(x, (int)rint(y), dim)] = *maximum_1(dim, src);
+        y += slope;
+    }
+}

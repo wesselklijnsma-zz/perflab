@@ -808,7 +808,7 @@ void test_line(int bench_index)
     int test_num;
     char *description = benchmarks_line[bench_index].description;
 
-    for(test_num=0; test_num < DIM_CNT; test_num++) {
+    for(test_num = DIM_CNT- 1; test_num >= 0; test_num--) {
 	int dim;
 
 	/* Check correctness for odd (non power of two dimensions */

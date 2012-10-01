@@ -7,15 +7,13 @@
 /* 
  * CPEs for the baseline (naive) version of the rotate function.
  * Rd is the measured CPE for a dxd image.
- * Measured on a Pentium E2180 processor (CPUID signature 06FDh).
+ * Measured on a Pentium 4 processor (CPUID signature 0F27h).
  */
-#define R64    16
-#define R128   12
-#define R256   12
-#define R512   30
-#define R1024  60
-#define R1536  99
-#define R2048 107
+#define R64    12
+#define R128   20
+#define R256   45
+#define R512   125
+#define R1024  145
 
 /* 
  * CPEs for the baseline (naive) version of the smooth function
@@ -32,15 +30,14 @@
 /* 
  * CPEs for the baseline (naive) version of the line function
  * Sd is the measured CPE for a dxd image.
- * L64 and L128 Measured on a Pentium 4 processor.
- * larger images measured on a Xeon Processor
+ * L64 measured on a Pentium Dual processor E2180.
+ * New measurements for an 'Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz'
  */
-#define L64    72  
-#define L128   74  
-#define L256   78
-#define L512   190
-#define L1024  260   
-#define L1536  260
-#define L2048  260
+#define L64    1102  
+#define L128   2482 
+#define L256   6108
+#define L512   14068
+#define L1024  26999 
+#define L1536  45185
 
 #endif /* _CONFIG_H_ */

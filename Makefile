@@ -1,7 +1,7 @@
 # Student's Makefile for the CS:APP Performance Lab
 TEAM = bovik
 VERSION = 1
-HANDINDIR = /home/cs_ai/perflab/handin2011
+HANDINDIR = /opt/prac/cs_ai/perflab/handin2012
 
 WSIZE = 64
 OPTLEVEL = 2

@@ -1,0 +1,6 @@
+Jouke van der Maas (10186883) en Wessel Klijnsma ()
+
+# line_1
+De aanroep naar maximum is uit de loop gehaald. De argumenten van deze functie
+veranderden niet, dus het resultaat hoeft niet elke cyclus opnieuw uitgerekend
+te worden.

@@ -11,8 +11,10 @@
 void naive_line(int dim, pixel *src, pixel *dst);
 #define LINE_1_DESCR "line_1: maximum uit de loop"
 void line_1(int dim, pixel *src, pixel *dst);
-#define LINE_2_DESCR "line_2: ..."
+#define LINE_2_DESCR "line_2: inner loop weg"
 void line_2(int dim, pixel *src, pixel *dst);
+#define LINE_3_DESC "line_3: ..."
+void line_3(int dim, pixel *src, pixel *dst);
 
 /* ... Declare intermediate versions of the draw_line version here */
 /* ... When you made progress,

@@ -1,6 +1,15 @@
-Jouke van der Maas (10186883) en Wessel Klijnsma ()
+Jouke van der Maas (10186883) en Wessel Klijnsma (10172432)
 
 # line_1
 De aanroep naar maximum is uit de loop gehaald. De argumenten van deze functie
 veranderden niet, dus het resultaat hoeft niet elke cyclus opnieuw uitgerekend
 te worden.
+
+# line_2
+De dubbele loop in maximum is overbodig, er wordt geloopt van 0 tot dim^2 en die index
+wordt in src gebruikt. Alle overbodige macro's etc zijn weggehaald. 1.6x speedup sinds
+line_1.
+
+# line_3
+De functie intensity is erg simpel, deze kan makkelijk geinlined worden. 1.1x speedup
+sinds line_2.

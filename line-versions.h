@@ -13,8 +13,10 @@ void naive_line(int dim, pixel *src, pixel *dst);
 void line_1(int dim, pixel *src, pixel *dst);
 #define LINE_2_DESCR "line_2: inner loop weg"
 void line_2(int dim, pixel *src, pixel *dst);
-#define LINE_3_DESC "line_3: ..."
+#define LINE_3_DESCR "line_3: intensity inlined"
 void line_3(int dim, pixel *src, pixel *dst);
+#define LINE_4_DESCR "line_4: ..."
+void line_4(int dim, pixel *src, pixel *dst);
 
 /* ... Declare intermediate versions of the draw_line version here */
 /* ... When you made progress,

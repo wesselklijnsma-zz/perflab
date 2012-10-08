@@ -41,7 +41,7 @@ static pixel *maximum(int dim, pixel *src)
 
     return maxi;
 }
-static pixel *maximum_1(int dim, pixel *src)
+static pixel *maximum_2(int dim, pixel *src)
 {
     int jj;
     pixel *maxi = src;
@@ -59,7 +59,26 @@ static pixel *maximum_1(int dim, pixel *src)
     return maxi;
 }
 
-static pixel *maximum_2(int dim, pixel *src)
+static pixel *maximum_3(int dim, pixel *src)
+{
+    int jj;
+    pixel *maxi = src;
+    int darkness = 0;
+    int tot = dim * dim;
+
+    for(jj = 0; jj < tot; jj++)
+    {
+        int inten = src[jj].green + src[jj].red + src[jj].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj]);
+        }
+    }
+    return maxi;
+}
+
+static pixel *maximum_4(int dim, pixel *src)
 {
     int jj;
     pixel *maxi = src;
@@ -137,7 +156,7 @@ void line_2(int dim, pixel *src, pixel *dst) {
 
     double y = y0;
     int x = x0;
-    pixel max = *maximum_1(dim, src);
+    pixel max = *maximum_2(dim, src);
 
     for (; x <= x1; x++) {
         dst[RIDX(x, (int)rint(y), dim)] = max;
@@ -157,7 +176,27 @@ void line_3(int dim, pixel *src, pixel *dst) {
 
     double y = y0;
     int x = x0;
-    pixel max = *maximum_2(dim, src);
+    pixel max = *maximum_3(dim, src);
+
+    for (; x <= x1; x++) {
+        dst[RIDX(x, (int)rint(y), dim)] = max;
+        y += slope;
+    }
+}
+
+void line_4(int dim, pixel *src, pixel *dst) {
+    int x0 = 0;
+    int y0 = floor (dim / 3); /* left endpoint */
+    int x1 = dim - 1;
+    int y1 = ceil (dim - 1 - dim / 3); /* right endpoint */
+
+    double dy = y1 - y0;
+    double dx = x1 - x0;
+    double slope = dy / dx;
+
+    double y = y0;
+    int x = x0;
+    pixel max = *maximum_4(dim, src);
 
     for (; x <= x1; x++) {
         dst[RIDX(x, (int)rint(y), dim)] = max;

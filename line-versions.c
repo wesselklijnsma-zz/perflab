@@ -192,6 +192,76 @@ static pixel *maximum_5(int dim, pixel *src)
     return maxi;
 }
 
+static pixel *maximum_6(int dim, pixel *src)
+{
+    int jj;
+    pixel *maxi = src;
+    int darkness = 0;
+    int tot = dim * dim;
+    pixel px;
+    int intens;
+
+    for(jj = 0; jj < tot; jj+=8)
+    {
+        px = src[jj];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj]);
+        }
+        px = src[jj+1];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj+1]);
+        }
+        px = src[jj+2];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj+2]);
+        }
+        px = src[jj+3];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj+3]);
+        }
+        px = src[jj+4];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj+4]);
+        }
+        px = src[jj+5];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj+5]);
+        }
+        px = src[jj+6];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj+6]);
+        }
+        px = src[jj+7];
+        intens = px.green + px.red + px.blue;
+        if (intens > darkness)
+        {
+            darkness = intens;
+            maxi = &(src[jj+7]);
+        }
+    }
+    return maxi;
+}
 /******************************************************
  * Your different versions of the draw_line function go here
  ******************************************************/
@@ -339,7 +409,7 @@ void line_6(int dim, pixel *src, pixel *dst) {
 
     double y = y0;
     int x = x0;
-    pixel max = *maximum_5(dim, src);
+    pixel max = *maximum_6(dim, src);
 
     for (; x <= x1; x+=8) {
         dst[RIDX(x, (int)rint(y), dim)] = max;

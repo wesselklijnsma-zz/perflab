@@ -85,13 +85,55 @@ static pixel *maximum_4(int dim, pixel *src)
     int darkness = 0;
     int tot = dim * dim;
 
-    for(jj = 0; jj < tot; jj++)
+    for(jj = 0; jj < tot; jj+=8)
     {
         int inten = src[jj].green + src[jj].red + src[jj].blue;
         if (inten > darkness)
         {
             darkness = inten;
             maxi = &(src[jj]);
+        }
+        inten = src[jj+1].green + src[jj+1].red + src[jj+1].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj+1]);
+        }
+        inten = src[jj+2].green + src[jj+2].red + src[jj+2].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj+2]);
+        }
+        inten = src[jj+3].green + src[jj+3].red + src[jj+3].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj+3]);
+        }
+        inten = src[jj+4].green + src[jj+4].red + src[jj+4].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj+4]);
+        }
+        inten = src[jj+5].green + src[jj+5].red + src[jj+5].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj+5]);
+        }
+        inten = src[jj+6].green + src[jj+6].red + src[jj+6].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj+6]);
+        }
+        inten = src[jj+7].green + src[jj+7].red + src[jj+7].blue;
+        if (inten > darkness)
+        {
+            darkness = inten;
+            maxi = &(src[jj+7]);
         }
     }
     return maxi;

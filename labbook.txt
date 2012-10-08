@@ -13,3 +13,6 @@ line_1.
 # line_3
 De functie intensity is erg simpel, deze kan makkelijk geinlined worden. 1.1x speedup
 sinds line_2.
+
+# line_4
+for-loop in maximum unrolled (4x), 1.1 speedup.

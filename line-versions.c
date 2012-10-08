@@ -139,6 +139,59 @@ static pixel *maximum_4(int dim, pixel *src)
     return maxi;
 }
 
+static pixel *maximum_5(int dim, pixel *src)
+{
+    int jj;
+    pixel *maxi = src;
+    int darkness = 0;
+    int tot = dim * dim;
+
+    for(jj = 0; jj < tot; jj+=8)
+    {
+        if (src[jj].green+src[jj].red+src[jj].blue > darkness)
+        {
+            darkness = src[jj].green+src[jj].red+src[jj].blue;
+            maxi = &(src[jj]);
+        }
+        if (src[jj+1].green+src[jj+1].red+src[jj+1].blue > darkness)
+        {
+            darkness = src[jj+1].green+src[jj+1].red+src[jj+1].blue;
+            maxi = &(src[jj+1]);
+        }
+        if (src[jj+2].green+src[jj+2].red+src[jj+2].blue > darkness)
+        {
+            darkness = src[jj+2].green+src[jj+2].red+src[jj+2].blue;
+            maxi = &(src[jj+2]);
+        }
+        if (src[jj+3].green+src[jj+3].red+src[jj+3].blue > darkness)
+        {
+            darkness = src[jj+3].green+src[jj+3].red+src[jj+3].blue;
+            maxi = &(src[jj+3]);
+        }
+        if (src[jj+4].green+src[jj+4].red+src[jj+4].blue > darkness)
+        {
+            darkness = src[jj+4].green+src[jj+4].red+src[jj+4].blue;
+            maxi = &(src[jj+4]);
+        }
+        if (src[jj+5].green+src[jj+5].red+src[jj+5].blue > darkness)
+        {
+            darkness = src[jj+5].green+src[jj+5].red+src[jj+5].blue;
+            maxi = &(src[jj+5]);
+        }
+        if (src[jj+6].green+src[jj+6].red+src[jj+6].blue > darkness)
+        {
+            darkness = src[jj+6].green+src[jj+6].red+src[jj+6].blue;
+            maxi = &(src[jj+6]);
+        }
+        if (src[jj+7].green+src[jj+7].red+src[jj+7].blue > darkness)
+        {
+            darkness = src[jj+7].green+src[jj+7].red+src[jj+7].blue;
+            maxi = &(src[jj+7]);
+        }
+    }
+    return maxi;
+}
+
 /******************************************************
  * Your different versions of the draw_line function go here
  ******************************************************/
@@ -244,4 +297,25 @@ void line_4(int dim, pixel *src, pixel *dst) {
         dst[RIDX(x, (int)rint(y), dim)] = max;
         y += slope;
     }
+}
+
+void line_5(int dim, pixel *src, pixel *dst) {
+    int x0 = 0;
+    int y0 = floor (dim / 3); /* left endpoint */
+    int x1 = dim - 1;
+    int y1 = ceil (dim - 1 - dim / 3); /* right endpoint */
+
+    double dy = y1 - y0;
+    double dx = x1 - x0;
+    double slope = dy / dx;
+
+    double y = y0;
+    int x = x0;
+    pixel max = *maximum_5(dim, src);
+
+    for (; x <= x1; x++) {
+        dst[RIDX(x, (int)rint(y), dim)] = max;
+        y += slope;
+    }
+
 }

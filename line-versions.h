@@ -17,8 +17,10 @@ void line_2(int dim, pixel *src, pixel *dst);
 void line_3(int dim, pixel *src, pixel *dst);
 #define LINE_4_DESCR "line_4: loop unrolled (8x)"
 void line_4(int dim, pixel *src, pixel *dst);
-#define LINE_5_DESCR "line_5: ..."
+#define LINE_5_DESCR "line_5: variabele weggehaald"
 void line_5(int dim, pixel *src, pixel *dst);
+#define LINE_6_DESCR "line_6: ..."
+void line_6(int dim, pixel *src, pixel *dst);
 
 /* ... Declare intermediate versions of the draw_line version here */
 /* ... When you made progress,

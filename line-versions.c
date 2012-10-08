@@ -319,3 +319,38 @@ void line_5(int dim, pixel *src, pixel *dst) {
     }
 
 }
+
+void line_6(int dim, pixel *src, pixel *dst) {
+    int x0 = 0;
+    int y0 = floor (dim / 3); /* left endpoint */
+    int x1 = dim - 1;
+    int y1 = ceil (dim - 1 - dim / 3); /* right endpoint */
+
+    double dy = y1 - y0;
+    double dx = x1 - x0;
+    double slope = dy / dx;
+    double slope2 = slope*2;
+    double slope3 = slope*3;
+    double slope4 = slope*4;
+    double slope5 = slope*5;
+    double slope6 = slope*6;
+    double slope7 = slope*7;
+    double slope8 = slope*8;
+
+    double y = y0;
+    int x = x0;
+    pixel max = *maximum_5(dim, src);
+
+    for (; x <= x1; x+=8) {
+        dst[RIDX(x, (int)rint(y), dim)] = max;
+        dst[RIDX(x+1, (int)rint(y+slope), dim)] = max;
+        dst[RIDX(x+2, (int)rint(y+slope2), dim)] = max;
+        dst[RIDX(x+3, (int)rint(y+slope3), dim)] = max;
+        dst[RIDX(x+4, (int)rint(y+slope4), dim)] = max;
+        dst[RIDX(x+5, (int)rint(y+slope5), dim)] = max;
+        dst[RIDX(x+6, (int)rint(y+slope6), dim)] = max;
+        dst[RIDX(x+7, (int)rint(y+slope7), dim)] = max;
+        y += slope8;
+    }
+
+}

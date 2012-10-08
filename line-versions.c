@@ -198,66 +198,67 @@ static pixel *maximum_6(int dim, pixel *src)
     pixel *maxi = src;
     int darkness = 0;
     int tot = dim * dim;
-    pixel px;
-    int intens;
+    pixel px, px1, px2, px3, px4, px5, px7;
+    int it, it1, it2, it3, it4, it5, it6, it7;
 
     for(jj = 0; jj < tot; jj+=8)
     {
         px = src[jj];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
+        px1 = src[jj+1];
+        px2 = src[jj+2];
+        px3 = src[jj+3];
+        px4 = src[jj+4];
+        px5 = src[jj+5];
+        px6 = src[jj+6];
+        px7 = src[jj+7];
+        it = px.green + px.red + px.blue;
+        it1 = px.green1 + px.red1 + px.blue1;
+        it2 = px.green2 + px.red2 + px.blue2;
+        it3 = px.green3 + px.red3 + px.blue3;
+        it4 = px.green4 + px.red4 + px.blue4;
+        it5 = px.green5 + px.red5 + px.blue5;
+        it6 = px.green6 + px.red6 + px.blue6;
+        it7 = px.green7 + px.red7 + px.blue7;
+
+        if (it > darkness)
         {
-            darkness = intens;
+            darkness = it;
             maxi = &(src[jj]);
         }
-        px = src[jj+1];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
+        if (it1 > darkness)
         {
-            darkness = intens;
-            maxi = &(src[jj+1]);
-        }
-        px = src[jj+2];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
-        {
-            darkness = intens;
-            maxi = &(src[jj+2]);
-        }
-        px = src[jj+3];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
-        {
-            darkness = intens;
-            maxi = &(src[jj+3]);
-        }
-        px = src[jj+4];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
-        {
-            darkness = intens;
-            maxi = &(src[jj+4]);
-        }
-        px = src[jj+5];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
-        {
-            darkness = intens;
-            maxi = &(src[jj+5]);
-        }
-        px = src[jj+6];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
-        {
-            darkness = intens;
-            maxi = &(src[jj+6]);
-        }
-        px = src[jj+7];
-        intens = px.green + px.red + px.blue;
-        if (intens > darkness)
-        {
-            darkness = intens;
+            darkness = it1;
             maxi = &(src[jj+7]);
+        }
+        if (it2 > darkness)
+        {
+            darkness = it2;
+            maxi = &(src[jj]);
+        }
+        if (it3 > darkness)
+        {
+            darkness = it3;
+            maxi = &(src[jj]);
+        }
+        if (it4 > darkness)
+        {
+            darkness = it4;
+            maxi = &(src[jj]);
+        }
+        if (it5 > darkness)
+        {
+            darkness = it5;
+            maxi = &(src[jj]);
+        }
+        if (it6 > darkness)
+        {
+            darkness = it6;
+            maxi = &(src[jj]);
+        }
+        if (it7 > darkness)
+        {
+            darkness = it7;
+            maxi = &(src[jj]);
         }
     }
     return maxi;

@@ -19,8 +19,10 @@ void line_3(int dim, pixel *src, pixel *dst);
 void line_4(int dim, pixel *src, pixel *dst);
 #define LINE_5_DESCR "line_5: variabele weggehaald"
 void line_5(int dim, pixel *src, pixel *dst);
-#define LINE_6_DESCR "line_6: ..."
+#define LINE_6_DESCR "line_6: zelfde type bij elkaar"
 void line_6(int dim, pixel *src, pixel *dst);
+#define LINE_7_DESCR "line_7: ..."
+void line_7(int dim, pixel *src, pixel *dst);
 
 /* ... Declare intermediate versions of the draw_line version here */
 /* ... When you made progress,

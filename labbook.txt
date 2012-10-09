@@ -27,3 +27,10 @@ in place te doen. Dit is langzamer zonder de unroll, maar ongeveer 10% sneller m
 # line_6
 Geprobeerd de loop in line_6 zelf te unrollen, dit had vrijwel geen effect. Geprobeerd
 > te veranderen in < in maximum, dit was langzamer.
+Het bij elkaar zetten van de rekeninstructies in een blok aan het begin van de
+loop geeft een 1.5x versnelling.
+
+# line_7
+Optellingen van indices ook aan het begin gezet, haast geen effect. De
+optelling in andere volgorde gezet (rgb ipv grb), haast geen effect. Beide
+iets sneller (ong .1 cpe).

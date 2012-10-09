@@ -28,7 +28,7 @@ team_t team = {
 char line_descr[] = "line: Current working version";
 void line(int dim, pixel *src, pixel *dst)
 {
-   line_6(dim, src, dst);
+   line_7(dim, src, dst);
 }
 
 /*********************************************************************
@@ -46,9 +46,9 @@ void register_line_functions()
     /* ... Register intermediate results here */
     /* ... Remove the naive implementation as fast as possible,
            because testing this version takes a lot of time */
-    add_line_function(&line_5, LINE_5_DESCR);
+    add_line_function(&line_6, LINE_6_DESCR);
     //add_line_function(&naive_line, NAIVE_LINE_DESCR);  
-    set_line_baseline(LINE_5_DESCR);
+    set_line_baseline(LINE_6_DESCR);
 }
 
 /*********************************************************************

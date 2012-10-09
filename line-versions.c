@@ -198,7 +198,7 @@ static pixel *maximum_6(int dim, pixel *src)
     pixel *maxi = src;
     int darkness = 0;
     int tot = dim * dim;
-    pixel px, px1, px2, px3, px4, px5, px7;
+    pixel px, px1, px2, px3, px4, px5, px6, px7;
     int it, it1, it2, it3, it4, it5, it6, it7;
 
     for(jj = 0; jj < tot; jj+=8)
@@ -212,13 +212,13 @@ static pixel *maximum_6(int dim, pixel *src)
         px6 = src[jj+6];
         px7 = src[jj+7];
         it = px.green + px.red + px.blue;
-        it1 = px.green1 + px.red1 + px.blue1;
-        it2 = px.green2 + px.red2 + px.blue2;
-        it3 = px.green3 + px.red3 + px.blue3;
-        it4 = px.green4 + px.red4 + px.blue4;
-        it5 = px.green5 + px.red5 + px.blue5;
-        it6 = px.green6 + px.red6 + px.blue6;
-        it7 = px.green7 + px.red7 + px.blue7;
+        it1 = px1.green + px1.red + px1.blue;
+        it2 = px2.green + px2.red + px2.blue;
+        it3 = px3.green + px3.red + px3.blue;
+        it4 = px4.green + px4.red + px4.blue;
+        it5 = px5.green + px5.red + px5.blue;
+        it6 = px6.green + px6.red + px6.blue;
+        it7 = px7.green + px7.red + px7.blue;
 
         if (it > darkness)
         {
@@ -228,38 +228,119 @@ static pixel *maximum_6(int dim, pixel *src)
         if (it1 > darkness)
         {
             darkness = it1;
-            maxi = &(src[jj+7]);
+            maxi = &(src[jj+1]);
         }
         if (it2 > darkness)
         {
             darkness = it2;
-            maxi = &(src[jj]);
+            maxi = &(src[jj+2]);
         }
         if (it3 > darkness)
         {
             darkness = it3;
-            maxi = &(src[jj]);
+            maxi = &(src[jj+3]);
         }
         if (it4 > darkness)
         {
             darkness = it4;
-            maxi = &(src[jj]);
+            maxi = &(src[jj+4]);
         }
         if (it5 > darkness)
         {
             darkness = it5;
-            maxi = &(src[jj]);
+            maxi = &(src[jj+5]);
         }
         if (it6 > darkness)
         {
             darkness = it6;
-            maxi = &(src[jj]);
+            maxi = &(src[jj+6]);
         }
         if (it7 > darkness)
         {
             darkness = it7;
+            maxi = &(src[jj+7]);
+        }
+    }
+    return maxi;
+}
+
+static pixel *maximum_7(int dim, pixel *src)
+{
+    int jj;
+    pixel *maxi = src;
+    int darkness = 0;
+    int tot = dim * dim;
+    pixel px, px1, px2, px3, px4, px5, px6, px7;
+    int it, it1, it2, it3, it4, it5, it6, it7;
+    int j1, j2, j3, j4, j5, j6, j7;
+
+    for(jj = 0; jj < tot; jj+=8)
+    {
+        j1 = jj + 1;
+        j2 = jj + 2;
+        j3 = jj + 3;
+        j4 = jj + 4;
+        j5 = jj + 5;
+        j6 = jj + 6;
+        j7 = jj + 7;
+        px = src[jj];
+        px1 = src[j1];
+        px2 = src[j2];
+        px3 = src[j3];
+        px4 = src[j4];
+        px5 = src[j5];
+        px6 = src[j6];
+        px7 = src[j7];
+        it = px.green + px.red + px.blue;
+        it1 = px1.red + px1.green + px1.blue;
+        it2 = px2.red + px2.green + px2.blue;
+        it3 = px3.red + px3.green + px3.blue;
+        it4 = px4.red + px4.green + px4.blue;
+        it5 = px5.red + px5.green + px5.blue;
+        it6 = px6.red + px6.green + px6.blue;
+        it7 = px7.red + px7.green + px7.blue;
+
+        if (it > darkness)
+        {
+            darkness = it;
             maxi = &(src[jj]);
         }
+        if (it1 > darkness)
+        {
+            darkness = it1;
+            maxi = &(src[j1]);
+        }
+        if (it2 > darkness)
+        {
+            darkness = it2;
+            maxi = &(src[j2]);
+        }
+        if (it3 > darkness)
+        {
+            darkness = it3;
+            maxi = &(src[j3]);
+        }
+        if (it4 > darkness)
+        {
+            darkness = it4;
+            maxi = &(src[j4]);
+        }
+        if (it5 > darkness)
+        {
+            darkness = it5;
+            maxi = &(src[j5]);
+        }
+        if (it6 > darkness)
+        {
+            darkness = it6;
+            maxi = &(src[j6]);
+        }
+        if (it7 > darkness)
+        {
+            darkness = it7;
+            maxi = &(src[j7]);
+        }
+        
     }
     return maxi;
 }
@@ -411,6 +492,41 @@ void line_6(int dim, pixel *src, pixel *dst) {
     double y = y0;
     int x = x0;
     pixel max = *maximum_6(dim, src);
+
+    for (; x <= x1; x+=8) {
+        dst[RIDX(x, (int)rint(y), dim)] = max;
+        dst[RIDX(x+1, (int)rint(y+slope), dim)] = max;
+        dst[RIDX(x+2, (int)rint(y+slope2), dim)] = max;
+        dst[RIDX(x+3, (int)rint(y+slope3), dim)] = max;
+        dst[RIDX(x+4, (int)rint(y+slope4), dim)] = max;
+        dst[RIDX(x+5, (int)rint(y+slope5), dim)] = max;
+        dst[RIDX(x+6, (int)rint(y+slope6), dim)] = max;
+        dst[RIDX(x+7, (int)rint(y+slope7), dim)] = max;
+        y += slope8;
+    }
+
+}
+
+void line_7(int dim, pixel *src, pixel *dst) {
+    int x0 = 0;
+    int y0 = floor (dim / 3); /* left endpoint */
+    int x1 = dim - 1;
+    int y1 = ceil (dim - 1 - dim / 3); /* right endpoint */
+
+    double dy = y1 - y0;
+    double dx = x1 - x0;
+    double slope = dy / dx;
+    double slope2 = slope*2;
+    double slope3 = slope*3;
+    double slope4 = slope*4;
+    double slope5 = slope*5;
+    double slope6 = slope*6;
+    double slope7 = slope*7;
+    double slope8 = slope*8;
+
+    double y = y0;
+    int x = x0;
+    pixel max = *maximum_7(dim, src);
 
     for (; x <= x1; x+=8) {
         dst[RIDX(x, (int)rint(y), dim)] = max;

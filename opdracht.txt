@@ -1,0 +1,9 @@
+Materiaal
+Voor het performance lab is er gebruik gemaakt van de Dell Optiplex 790 computers in G0.18 met een Intel Core i3 met CentOs 6.1 x86-64. 
+
+Introductie
+
+De opdracht voor het derde practicum van het vak computer stystemen was een performance lab. Zoals de naam doet vermoeden, was het doel van deze opdracht het verhogen van de performance van een programma, oftewel het programma versnellen. Het programma wat versneld moest worden tekent een lijn onder een bepaalde hoek over een plaatje.
+Om de performance van het programma te bepalen, wordt er de eenheid Cycles Per Element (CPE) gehanteerd. Deze eenheid geeft aan hoeveel clock cycles er nodig zijn om 1 element (in dit geval een pixel)  te verwerkenen zegt dus iets over de snelheid van het programma.
+Door de code aan te passen op z'n manier dat de werking hetzelfde blijft maar er onnodige instructies bespaard blijven, kan het programma versneld worden. 
+Hieronder een beschrijving van de verandering die wij gemaakt hebben en de versnelling het heeft opgelevert.
